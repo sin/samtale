@@ -1,8 +1,11 @@
 {
-    "name": "samtale",
-    "version": "0.1.0",
-    "dependencies": {
-        "jquery": "*",
-        "backbone": "*"
-    }
+  "name": "samtale",
+  "version": "0.1.0",
+  "dependencies": {
+    "jquery": "*",
+    "backbone": "*",
+    "mustache": "~0.8.1",
+    "json2": "*",
+    "backbone.localStorage": "~1.1.7"
+  }
 }
