@@ -1,17 +1,28 @@
 jQuery(function ($) {
     'use strict';
-
     //noinspection JSUnusedLocalSymbols
-    var Message = Backbone.Model.extend({
+    var socket = io.connect("192.168.1.2:8080"),
+
+        Message = Backbone.Model.extend({
             defaults: {
                 name: "Anonymous",
                 message: ""
-            }
+            },
+            socket: socket
         }),
 
         MessageList = Backbone.Collection.extend({
             model: Message,
-            localStorage: new Store("samtale")
+            url: 'samtale',
+            socket: socket,
+            initialize: function () {
+                //noinspection JSLint
+                _.bindAll(this, 'serverCreate');
+                this.ioBind('create', this.serverCreate, this);
+            },
+            serverCreate: function (data) {
+                this.add(data);
+            }
         }),
 
         channel = new MessageList(),
@@ -19,7 +30,7 @@ jQuery(function ($) {
         MessageView = Backbone.View.extend({
             tagName: "li",
 
-            template: "{{name}}: {{message}}",
+            template: "<strong>{{name}}:</strong> {{message}}",
 
             initialize: function () {
                 //noinspection JSLint
@@ -28,7 +39,6 @@ jQuery(function ($) {
             },
 
             render: function () {
-                console.log("test");
                 var rendered = Mustache.to_html(this.template, this.model.toJSON());
                 $(this.el).html(rendered);
                 return this;
@@ -39,7 +49,7 @@ jQuery(function ($) {
             el: $('#app'),
 
             events: {
-                "submit   #sendForm": "create"
+                "submit   #sendForm": "createMsg"
             },
 
             initialize: function () {
@@ -47,14 +57,20 @@ jQuery(function ($) {
                 _.bindAll(this, 'render', 'addOne');
                 channel.bind('add', this.addOne);
                 channel.fetch();
+                var el = $("#messages");
+                el.scrollTop(el[0].scrollHeight);
             },
 
             addOne: function (msg) {
-                var view = new MessageView({model: msg});
+                var view = new MessageView({model: msg}),
+                    el = $("#messages");
                 this.$('#messages ul').append(view.render().el);
+                el.scrollTop(el[0].scrollHeight);
             },
 
-            create: function (e) {
+            createMsg: function (e) {
+                e.preventDefault();
+
                 var value = this.$('#textInput').val();
                 if (!value) {
                     return;
@@ -66,4 +82,5 @@ jQuery(function ($) {
         }),
 
         App = new AppView();
+    //localStorage.clear();
 });

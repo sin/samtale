@@ -2,7 +2,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Ubuntu Mono', sans-serif;
+  background: #fafafa;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 header {
@@ -10,13 +11,20 @@ header {
   position: fixed;
   top: 0;
   height: 60px;
-  background: #000;
+  background: #45484d;
+  background: -moz-linear-gradient(top, #555 0%, #282828 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555), color-stop(100%, #282828));
+  background: -webkit-linear-gradient(top, #555 0%, #282828 100%);
+  background: -o-linear-gradient(top, #555 0%, #282828 100%);
+  background: -ms-linear-gradient(top, #555 0%, #282828 100%);
+  background: linear-gradient(to bottom, #555 0%, #282828 100%);
   color: #fff;
   h1 {
     margin: 0;
     padding: 0 25px;
     font-size: 40px;
     line-height: 60px;
+    font-family: 'Ubuntu Mono', Arial, sans-serif;
   }
 }
 
@@ -35,17 +43,17 @@ header {
 #sidebar {
   float: left;
   position: relative;
-  box-shadow: 4px 0 4px #ccc;
+  box-shadow: 2px 0 2px #e6e6e6;
   width: 200px;
   height: 100%;
-  background: #fff;
-  border-right: 1px solid #999;
+  background: #f5f5f5;
+  border-right: 1px solid #ccc;
   z-index: 200;
   padding: 5px 0;
   h3 {
     padding: 0 10px;
     margin: 10px 0;
-    color: #333;
+    color: #555;
     font-size: 22px;
   }
 }
@@ -67,13 +75,15 @@ header {
   bottom: 0;
   left: 0;
   right: 0;
+  font-size: 14px;
+  color: #212121;
   margin-bottom: 35px;
   overflow-y: scroll;
   ul {
     margin: 0;
     padding: 0;
     li {
-      background: #ddd;
+      background: #e5e5e5;
       padding: 8px 8px 8px 12px;
     }
     li:nth-child(odd) {
@@ -85,12 +95,15 @@ header {
 #typing {
   position: absolute;
   height: 35px;
+  border-top: 1px solid #ddd;
+  box-shadow: 2px 2px 3px #ebebeb inset;
   width: 100%;
   bottom: 0;
   #textInput {
     display: block;
     margin: 0;
     margin-right: 15px;
+    box-shadow: 2px 2px 3px #ebebeb inset;
     font-family: Arial, sans-serif;
     font-size: 14px;
     padding-left: 10px;
@@ -102,6 +115,7 @@ header {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     z-index: 100;
+    padding-right: 130px;
   }
   #sendButton {
     box-sizing: border-box;
@@ -109,10 +123,27 @@ header {
     -moz-box-sizing: border-box;
     z-index: 200;
     display: block;
+    border: 1px solid #a3a3a3;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 2px 2px 3px #ebebeb inset;
     position: absolute;
     top: 5px;
     right: 5px;
     height: 25px;
     width: 120px;
   }
+  #sendButton:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3c7ec0), color-stop(1, #3570aa));
+    background: -webkit-linear-gradient(top, #3c7ec0 0%, #3570aa 100%);
+    background: -moz-linear-gradient(top, #3c7ec0 0%, #3570aa 100%);
+    background: linear-gradient(top, #3c7ec0 0%, #3570aa 100%);
+    color: #fff;
+    text-shadow: -1px -1px 0 #285480;
+    border: 1px solid #2d5f91;
+    box-shadow: none;
+    color: #FFFFFF;
+    text-shadow: -1px -1px 0 #285480;
+  }
+
 }

@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Samtale</title>
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:700,400,400italic' rel='stylesheet'
-          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:700,400,400italic&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/main.css"/>
     <script src="socket.io/socket.io.js"></script>
     <script src="js/vendor/json2.js"></script>
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/underscore.js"></script>
     <script src="js/vendor/backbone.js"></script>
-    <script src="js/vendor/backbone.localStorage.js"></script>
+    <!--<script src="js/vendor/backbone.localStorage.js"></script>-->
+    <script src="js/vendor/backbone.iosync.js"></script>
+    <script src="js/vendor/backbone.iobind.js"></script>
     <script src="js/vendor/mustache.js"></script>
     <script src="js/main.js"></script>
 </head>
@@ -21,7 +22,7 @@
         <h1>Samtale</h1>
     </header>
     <div id="sidebar">
-        <h3>Channels</h3>
+        <h3>Settings</h3>
         <ul id="channels">
         </ul>
     </div>
@@ -34,7 +35,7 @@
             <div id="typing">
                 <form action="/" id="sendForm" name="sendForm">
                     <div id="formWrap">
-                        <input placeholder="Type message here" type="text" value="" name="textInput" id="textInput">
+                        <input placeholder="Type message here" type="text" value="" name="textInput" id="textInput" autocomplete="off">
                         <input type="submit" value="Send message" name="sendButton" id="sendButton">
                     </div>
                 </form>

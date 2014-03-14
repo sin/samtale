@@ -6,6 +6,7 @@
     "backbone": "*",
     "mustache": "~0.8.1",
     "json2": "*",
-    "backbone.localStorage": "~1.1.7"
+    "backbone.localStorage": "~1.1.7",
+    "backbone.iobind": "~0.4.7"
   }
 }

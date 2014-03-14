@@ -28,7 +28,25 @@ app.use(function(req, res){
 });
 
 io.sockets.on('connection', function (socket) {
-    socket.on('message_to_server', function (data) {
-        io.sockets.emit("message_to_client", { message: data.message, name: data.name });
+
+    socket.on('samtale:create', function (data, callback) {
+        socket.broadcast.emit('samtale:create', data);
+        console.log('create');
     });
+
+    socket.on('samtale:read', function (data, callback) {
+        socket.broadcast.emit('samtale:read', {message: 'test'});
+        console.log('read');
+    });
+
+    socket.on('samtale:update', function (data, callback) {
+        socket.emit('samtale:update', {message: 'test'});
+        console.log('samtale');
+    });
+
+    socket.on('samtale:delete', function (data, callback) {
+        socket.emit('samtale:delete', {message: 'test'});
+        console.log('delete');
+    });
+
 });
