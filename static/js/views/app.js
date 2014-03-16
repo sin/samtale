@@ -28,13 +28,20 @@ define(['jquery', 'underscore', 'backbone', 'collections/messages', 'views/messa
 
             createMsg: function (e) {
                 e.preventDefault();
+                e.stopPropagation();
 
-                var value = this.$('#textInput').val();
+                var value = this.$('#textInput').val(),
+                    nick = $('#nickname').val();
+
                 if (!value) {
                     return;
                 }
 
-                messages.create({message: value});
+                if (nick === "") {
+                    nick = undefined;
+                }
+
+                messages.create({message: value, name: nick});
                 this.$('#textInput').val('');
             }
         });
