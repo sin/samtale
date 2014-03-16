@@ -1,9 +1,13 @@
+@font-stack-primary: Helvetica Neue, Helvetica, Arial, sans-serif;
+@font-stack-secondary: 'Ubuntu Mono', Arial, sans-serif;
+
+
 body {
   margin: 0;
   padding: 0;
   height: 100%;
   background: #fafafa;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: @font-stack-primary;
 }
 
 header {
@@ -24,7 +28,7 @@ header {
     padding: 0 25px;
     font-size: 40px;
     line-height: 60px;
-    font-family: 'Ubuntu Mono', Arial, sans-serif;
+    font-family: @font-stack-secondary;
   }
 }
 
@@ -104,7 +108,7 @@ header {
     margin: 0;
     margin-right: 15px;
     box-shadow: 2px 2px 3px #ebebeb inset;
-    font-family: Arial, sans-serif;
+    font-family: @font-stack-primary;
     font-size: 14px;
     padding-left: 10px;
     width: 100%;
@@ -138,8 +142,6 @@ header {
     background: -webkit-linear-gradient(top, #3c7ec0 0%, #3570aa 100%);
     background: -moz-linear-gradient(top, #3c7ec0 0%, #3570aa 100%);
     background: linear-gradient(top, #3c7ec0 0%, #3570aa 100%);
-    color: #fff;
-    text-shadow: -1px -1px 0 #285480;
     border: 1px solid #2d5f91;
     box-shadow: none;
     color: #FFFFFF;
