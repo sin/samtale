@@ -1,7 +1,7 @@
 jQuery(function ($) {
     'use strict';
     //noinspection JSUnusedLocalSymbols
-    var socket = io.connect("192.168.1.2:8080"),
+    var socket = io.connect("37.139.30.28:8080"),
 
         Message = Backbone.Model.extend({
             defaults: {
