@@ -11,12 +11,11 @@ var express = require('express'),
 app.engine('mustache', mustache());
 
 app.set('view engine', 'mustache');
-app.set('views', __dirname + '/../views');
+app.set('views', __dirname + '/views');
 
 app.use(logger('dev'));
 app.use(express.compress());
 app.use(express.static(__dirname + '/../static'));
-app.use(express.static(__dirname + '/../views'));
 
 app.get('/', function (req, res) {
     res.render('index', { title: "Samtale" });
