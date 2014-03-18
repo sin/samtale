@@ -12,8 +12,6 @@ define(['jquery', 'underscore', 'backbone', 'views/app'],
                     var App = new AppView();
                 });
 
-
-
                 Backbone.history.start({pushState: true});
             };
 

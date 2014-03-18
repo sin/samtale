@@ -8,6 +8,7 @@
     "json2": "*",
     "backbone.localStorage": "~1.1.7",
     "backbone.iobind": "~0.4.7",
-    "requirejs": "~2.1.11"
+    "requirejs": "~2.1.11",
+    "almond": "~0.2.9"
   }
 }

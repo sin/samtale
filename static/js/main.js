@@ -5,7 +5,7 @@ require.config({
         jquery: 'libs/jquery/jquery',
         underscore: 'libs/underscore/underscore',
         backbone: 'libs/backbone/backbone',
-        socketio: '../socket.io/socket.io',
+        "socket.io": 'libs/socket.io/socket.io',
         mustache: 'libs/mustache/mustache',
         localStorage: 'libs/backbone.localStorage/backbone.localStorage',
         iobind: 'libs/backbone.iobind/backbone.iobind',
@@ -16,9 +16,6 @@ require.config({
     shim: {
         'json': {
             exports: 'JSON'
-        },
-        'socketio': {
-            exports: 'io'
         }
     }
 });

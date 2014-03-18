@@ -1,5 +1,5 @@
 // socket.js
 
-define(['socketio'], function (io) {
-    return io.connect("192.168.43.254:8080");
+define(['socket.io'], function (io) {
+    return io.connect("37.139.30.28:8080");
 });
