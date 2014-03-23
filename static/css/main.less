@@ -1,99 +1,91 @@
-@font-stack-primary: Helvetica Neue, Helvetica, Arial, sans-serif;
+@import (less) 'font-face.css';
+@import (reference) 'imports.less';
+
+@font-stack-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 @font-stack-secondary: 'Ubuntu Mono', Arial, sans-serif;
 @color-primary: #fafafa;
-
-@font-face {
-  font-family: 'Ubuntu Mono';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(http://themes.googleusercontent.com/static/fonts/ubuntumono/v4/ViZhet7Ak-LRXZMXzuAfkdIh4imgI8P11RFo6YPCPC0.woff) format('woff');
-}
-@font-face {
-  font-family: 'Ubuntu Mono';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Ubuntu Mono Bold'), local('UbuntuMono-Bold'), url(http://themes.googleusercontent.com/static/fonts/ubuntumono/v4/ceqTZGKHipo8pJj4molytoUt79146ZFaIJxILcpzmhI.woff) format('woff');
-}
-@font-face {
-  font-family: 'Ubuntu Mono';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Ubuntu Mono Italic'), local('UbuntuMono-Italic'), url(http://themes.googleusercontent.com/static/fonts/ubuntumono/v4/KAKuHXAHZOeECOWAHsRKAyiURDTH4ZeuJyFQH0IObys.woff) format('woff');
-}
-
-.box-sizing(@val) {
-  -webkit-box-sizing: @val;
-  -moz-box-sizing: @val;
-  box-sizing: @val;
-}
+@header-height: 60px;
+@sidebar-width: 200px;
 
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
+
   background: @color-primary;
+
   font-family: @font-stack-primary;
 }
 
 header {
   position: fixed;
   top: 0;
+  left: 0;
+
   width: 100%;
-  height: 60px;
-  background: #45484d;
-  background: -moz-linear-gradient(top, #555 0%, #282828 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555), color-stop(100%, #282828));
-  background: -webkit-linear-gradient(top, #555 0%, #282828 100%);
-  background: -o-linear-gradient(top, #555 0%, #282828 100%);
-  background: -ms-linear-gradient(top, #555 0%, #282828 100%);
-  background: linear-gradient(to bottom, #555 0%, #282828 100%);
-  color: #fff;
+  height: @header-height;
+
+  color: #FFFFFF;
+  background: #45484D;
+  background: linear-gradient(to bottom, #555555 0%, #282828 100%);
+
   h1 {
     margin: 0;
     padding: 0 25px;
-    font-size: 40px;
+
     font-family: @font-stack-secondary;
-    line-height: 60px;
+    font-size: 40px;
+    line-height: @header-height;
   }
 }
 
 #app {
-  .box-sizing(border-box);
   position: absolute;
+
   overflow: hidden;
-  padding-top: 60px;
-  min-height: 100%;
+
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
+  min-height: 100%;
+  padding-top: @header-height;
 }
 
 #sidebar {
   position: relative;
   z-index: 200;
+
   float: left;
-  padding: 5px 0;
-  width: 200px;
+
+  width: @sidebar-width;
   height: 100%;
+  padding: 5px 0;
+
   border-right: 1px solid #ccc;
   background: #f5f5f5;
   box-shadow: 2px 0 2px #e6e6e6;
+
   h3 {
     margin: 10px 0;
     padding: 0 10px;
+
     color: #555;
+
     font-size: 22px;
   }
 }
 
 #cont {
   z-index: 100;
+
   height: 100%;
 }
 
 #content {
   position: relative;
-  margin-left: 200px;
+
   height: 100%;
+  margin-left: @sidebar-width;
 }
 
 #messages {
@@ -102,17 +94,25 @@ header {
   right: 0;
   bottom: 0;
   left: 0;
+
   overflow-y: scroll;
+
   margin-bottom: 35px;
+
   color: #212121;
+
   font-size: 14px;
+
   ul {
     margin: 0;
     padding: 0;
+
     li {
       padding: 8px 8px 8px 12px;
+
       background: #e5e5e5;
     }
+
     li:nth-child(odd) {
       background: #eee;
     }
@@ -122,49 +122,57 @@ header {
 #typing {
   position: absolute;
   bottom: 0;
+
   width: 100%;
   height: 35px;
+
   border-top: 1px solid #ddd;
   box-shadow: 2px 2px 3px #ebebeb inset;
-  #textInput {
-    .box-sizing(border-box);
-    z-index: 100;
-    display: block;
-    margin: 0;
-    margin-right: 15px;
-    padding-right: 130px;
-    padding-left: 10px;
-    width: 100%;
-    height: 35px;
-    border: 0;
-    box-shadow: 2px 2px 3px #ebebeb inset;
-    font-size: 14px;
-    font-family: @font-stack-primary;
-    line-height: 35px;
-  }
-  #sendButton {
-    .box-sizing(border-box);
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    z-index: 200;
-    display: block;
-    width: 120px;
-    height: 25px;
-    border: 1px solid #a3a3a3;
-    border-radius: 6px;
-    background: #fff;
-    box-shadow: 2px 2px 3px #ebebeb inset;
-  }
-  #sendButton:hover {
-    border: 1px solid #2d5f91;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3c7ec0), color-stop(1, #3570aa));
-    background: -webkit-linear-gradient(top, #3c7ec0 0%, #3570aa 100%);
-    background: -moz-linear-gradient(top, #3c7ec0 0%, #3570aa 100%);
-    background: linear-gradient(top, #3c7ec0 0%, #3570aa 100%);
-    box-shadow: none;
+}
+
+#textInput {
+  z-index: 100;
+
+  display: block;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  margin: 0;
+  margin-right: 15px;
+  padding-right: 130px;
+  padding-left: 10px;
+
+  border: 0;
+  box-shadow: 2px 2px 3px #ebebeb inset;
+
+  font-family: @font-stack-primary;
+  font-size: 14px;
+  line-height: 35px;
+}
+
+#sendButton {
+  position: absolute;
+  z-index: 200;
+  top: 5px;
+  right: 5px;
+
+  display: block;
+
+  box-sizing: border-box;
+  width: 120px;
+  height: 25px;
+
+  border: 1px solid #a3a3a3;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 2px 2px 3px #ebebeb inset;
+
+  &:hover {
     color: #FFFFFF;
+    border: 1px solid #2d5f91;
+    background: linear-gradient(to bottom, #3c7ec0 0%, #3570aa 100%);
+    box-shadow: none;
     text-shadow: -1px -1px 0 #285480;
   }
-
 }
