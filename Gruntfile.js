@@ -10,18 +10,22 @@ module.exports = function (grunt) {
         },
         autoprefixer: {
             options: {
-
+                browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
             },
             css: {
-
+                src: 'static/css/main.css',
+                dest: 'static/css/main.css'
             }
         },
         requirejs: {
             compile: {
                 options: {
-
+                    wrap: true,
+                    optimize: 'none',
                     mainConfigFile: "static/js/main.js",
+                    name: "almond",
                     include: "main",
+                    insertRequire: ['main'],
                     out: "static/js/optimized.js"
                 }
             }
@@ -36,6 +40,10 @@ module.exports = function (grunt) {
             dev: {
                 files: 'static//*.js',
                 tasks: ['concat', 'uglify']
+            },
+            css: {
+                files: 'static/css/main.css',
+                tasks: ['autoprefixer']
             }
         }
     });
@@ -47,7 +55,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     grunt.registerTask('default', ['concat', 'uglify']);
-    grunt.registerTask('css', ['autoprefixer']);
+    grunt.registerTask('css', ['watch:css']);
     grunt.registerTask('rjs', ['requirejs']);
     grunt.registerTask('dev', ['watch']);
 
