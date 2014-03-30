@@ -16363,7 +16363,7 @@ if (typeof define === "function" && define.amd) {
 // socket.js
 
 define('socket',['socket.io'], function (io) {
-    return io.connect("192.168.43.254:8080");
+    return io.connect("192.168.1.2:8080");
 });
 
 // Wrapper based on https://github.com/umdjs/umd
@@ -17808,6 +17808,8 @@ define('views/app',['jquery', 'underscore', 'backbone', 'collections/messages', 
                 "submit   #sendForm": "createMsg"
             },
 
+            input: $('#textInput'),
+
             initialize: function () {
                 _.bindAll(this, 'render', 'addOne');
                 messages.bind('add', this.addOne);
@@ -17827,7 +17829,7 @@ define('views/app',['jquery', 'underscore', 'backbone', 'collections/messages', 
                 e.preventDefault();
                 e.stopPropagation();
 
-                var value = this.$('#textInput').val(),
+                var value = this.input.val(),
                     nick = $('#nickname').val();
 
                 if (!value) {
@@ -17839,7 +17841,7 @@ define('views/app',['jquery', 'underscore', 'backbone', 'collections/messages', 
                 }
 
                 messages.create({message: value, name: nick});
-                this.$('#textInput').val('');
+                this.input.val('');
             }
         });
     });

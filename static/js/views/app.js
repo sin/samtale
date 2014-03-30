@@ -11,6 +11,8 @@ define(['jquery', 'underscore', 'backbone', 'collections/messages', 'views/messa
                 "submit   #sendForm": "createMsg"
             },
 
+            input: $('#textInput'),
+
             initialize: function () {
                 _.bindAll(this, 'render', 'addOne');
                 messages.bind('add', this.addOne);
@@ -30,7 +32,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/messages', 'views/messa
                 e.preventDefault();
                 e.stopPropagation();
 
-                var value = this.$('#textInput').val(),
+                var value = this.input.val(),
                     nick = $('#nickname').val();
 
                 if (!value) {
@@ -42,7 +44,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/messages', 'views/messa
                 }
 
                 messages.create({message: value, name: nick});
-                this.$('#textInput').val('');
+                this.input.val('');
             }
         });
     });
